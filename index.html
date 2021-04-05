@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/CSSRulePlugin.min.js"></script>
+    <style>
+        body {
+            font-family: 'Open Sans', Arial;
+        }
+        
+        .button {
+            background-color: #2980b9;
+            border: none;
+            color: white;
+            padding: 15px;
+            width: 125px;
+            border-radius: 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 2px;
+            cursor: pointer;
+        }
+        
+        .containerbanner {
+            text-align: center;
+            padding: 25px;
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 3em;
+            position: relative;
+            z-index: 1;
+            color: black;
+            backdrop-filter: blur(40px);
+            border: solid 2px transparent;
+            background-clip: padding-box;
+            box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+            width: 550px;
+            height: 300px;
+            margin: auto;
+        }
+        
+        .bg-img {
+            /* The image used */
+            background-image: url("resources/New_Wallpaper.jpg");
+            background-position: center;
+            background-position: center;
+            min-height: 550px;
+            /* Center and scale the image nicely */
+            background-repeat: no-repeat;
+            background-size: cover;
+            /* Needed to position the navbar */
+            position: relative;
+            max-width: 100%;
+        }
+        
+        .container2 {
+            background-color: rgba(44, 47, 121, 0.05);
+            vertical-align: middle;
+        }
+        
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: #2980b9;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 15px;
+        }
+        
+        #myBtn:hover {
+            background-color: #297fb980;
+        }
+        
+        .card {
+            width: 80%;
+            margin: 0 auto;
+            min-width: 500px;
+            padding: 3em;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .card::before,
+        .card::after {
+            content: "";
+            position: absolute;
+            height: 400px;
+            width: 80%;
+            background: white;
+            top: 0;
+            right: 0;
+            z-index: -2;
+        }
+        
+        h1 {
+            margin: 0;
+        }
+        
+        .card::after {
+            width: 0;
+            background: #2980b9;
+            left: 0;
+            z-index: -1;
+        }
+        
+        p {
+            clip-path: circle(0% at 100% 0);
+            color: white;
+            font-size: 1.2em;
+            line-height: 1.2em;
+            margin: 0;
+            padding: 1.5em 0 0 3em;
+            position: relative;
+            transform: translateX(20px);
+        }
+        
+        p::before {
+            content: "";
+            position: absolute;
+            height: 80%;
+            top: 2em;
+            left: 0;
+            width: 5px;
+            background: white;
+        }
+        
+        .flip-card {
+            background-color: transparent;
+            width: 275px;
+            height: 275px;
+            perspective: 1000px;
+            margin: auto;
+        }
+        
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+        
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+        
+        .flip-card-front {
+            color: black;
+        }
+        
+        .flip-card-back {
+            background-color: #2980b9;
+            color: white;
+            transform: rotateY(180deg);
+            padding: 15px;
+        }
+        .link-table{
+            margin: auto;
+        }
+    </style>
+
+</head>
+
+<body data-spy="scroll" data-target=".navbar">
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><B>Back to Top</B></button>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top visible-lg visible-md">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+        </button>
+                <a class="navbar-brand" href="#">Vedvar Singh Parihar</a>
+            </div>
+            <div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#section1"><b>Hello</b></a></li>
+                        <li><a href="#section2"><b>About Me</b></a></li>
+                        <li><a href="#section3"><b>Skills</b></a></li>
+                        <li><a href="#section4"><b>Work Experience</b></a></li>
+                        <li><a href="#section5"><b>College Projects</b></a></li>
+                        <li><a href="#section6"><b>Education</b></a></li>
+                    </ul>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="bg-img container-fluid visible-lg visible-md" id="section1" style="padding-top: 100px;">
+        <div class="row">
+            <div class="col-sm-3">&nbsp;</div>
+            <div class="col-sm-6">
+                <div class="containerbanner visible-lg visible-md visible-sm" id="glass">
+                    <table>
+                        <tr>
+                            <td rowspan="5" style="align-items: center; vertical-align: middle; padding: 25px;">
+                                <IMG SRC="resources/profile.jpg" style="border-radius:100%" width="150px">
+                            </td>
+                            <td style="padding-right: 25px;"></td>
+                            <td>
+                                <h3>
+                                    <B>Vedvrat Singh Parihar</B>
+                                </h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: 25px;"><img src="resources/Phone.png" width="30px"></td>
+                            <td>
+                                <h4> <a href="tel: +14379887801">+1 437 988 7801</a> </h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: 25px;"><img src="resources/linkedin_icon.png" width="30px"></td>
+                            <td>
+                                <!-- <h4> <link>linkedin.com/in/vedvrat-singh-parihar-763a91111/</link></h4> -->
+                               <h4><a href="https://www.linkedin.com/in/vedvrat-singh-parihar-763a91111/"> Find me on Linkedin</a>
+                                </h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: 25px;"><img src="resources/email_Icon.png" width="30px"></td>
+                            <td>
+                                <h4><a href="mailto:vedvratsp@gmail.com">vedvratsp@gmail.com</a></h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: 25px;"><img src="resources/Location_Icon.png" width="30px"></td>
+                            <td>
+                                <h4>Toronto, ON, Canada</h4>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col text-center" style="padding-top: 15px; padding-bottom: 15px;"><a href="https://drive.google.com/file/d/1VVCAkVifaZ01WzScIDeZ2sndvCmdt2-4/view?usp=sharing"><button class="button"><b>Resume</b></button></a></div>
+            </div>
+            <div class="col-sm-3">&nbsp;</div>
+        </div>
+    </div>
+    <div class="container-fluids visible-sm visible-xs">
+        <h3 style="text-align: center; padding-bottom: 25px;">
+            <B>Hello</B>
+        </h3>
+        <div class="row">
+            <div class="col-sm-12"><img src="resources/Profile_dp.jpg" class="img-responsive"></div>
+        </div>
+        <div class="col text-center" style="padding-top: 15px; padding-bottom: 15px;"><a href="https://drive.google.com/file/d/1VVCAkVifaZ01WzScIDeZ2sndvCmdt2-4/view?usp=sharing"><button class="button"><b>Resume</b></button></a></div>
+    </div>
+    <div class="container-fluid visible-sm visible-xs" style="padding-top: 25px;">
+        <div class="row">
+            <h3 style="text-align: center; padding-bottom: 25px;">
+                <B>About Me</B>
+            </h3>
+            <div class="col-sm-2">&nbsp;</div>
+            <div class="col-sm-8" style="text-align: center;">
+                <h3><b>
+                    Hi, I am a Business Analyst with 2.8 years of experience working as software deveoper and data analyst for Amazon, Maxgen Tech. Pvt. Ltd., and Akson Solar equipment Pvt. Ltd.. Currently seeking full-time or internship opportunities.</b></h3><br>
+                <h4>I am passionate about providing exceptional customer service by designing best-in-class products and IT applications. I always aim to improve my skillset and become a Subject Matter Expert (SME) in the field of UI/UX, Business Analysis
+                    and IT Project Management and development.
+                </h4>
+            </div>
+            <div class="col-sm-2">&nbsp;</div>
+        </div>
+    </div>
+    <div class="container-fluid visible-lg visible-md" id="section2" style="padding-top: 50px;padding-bottom: 45px;">
+        <h2 style="text-align: center; padding-bottom: 25px;">
+            <B>About Me</B>
+        </h2>
+        <div class="row">
+            <div class="col-sm-2">&nbsp;</div>
+            <div class="col-sm-8">
+                <div class="card" id="card">
+                    <h1>
+                        Hi, I am a Business Analyst with 2.8 years of experience working as software deveoper and data analyst for Amazon, Maxgen Tech. Pvt. Ltd., and Akson Solar equipment Pvt. Ltd.. Currently seeking full-time or internship opportunities</h1>
+                    <p>I am passionate about providing exceptional customer service by designing best-in-class products and IT applications. I always aim to improve my skillset and become a Subject Matter Expert (SME) in the field of UI/UX, Business Analysis
+                        and IT Project Management and development.</p>
+                </div>
+            </div>
+            <div class="col-sm-2">&nbsp;</div>
+        </div>
+    </div>
+    <div class="container-fluid" id="section3" style="padding-top: 50px;">
+        <div class="row visible-md visible-lg" style="align-content: center;">
+            <h2 style="text-align: center;">
+                <B>Skills</B>
+            </h2>
+            <div class="col-sm-4">&nbsp;</div>
+            <div class="col-sm-4"><canvas style="margin:auto;" id="canvas"></canvas></div>
+            <div class="col-sm-4">&nbsp;</div>
+        </div>
+        <div class="row visible-sm visible-xs" style="text-align: center;">
+            <h2 style="text-align: center;">
+                <B>Skills</B>
+            </h2>
+            <div class="col-sm-12"><img src="resources/Word_sphere.png" width="600px">
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 50px;">
+            <div class="col-sm-2">&nbsp;</div>
+            <div class="col-sm-8" style="text-align: center;">
+                <table>
+                    <tr style="padding-bottom: 25px;">
+                        <td><img class="img-responsive" src="resources/java.png" style="padding-right: 10px;"></td>
+                        <td><img class="img-responsive" src="resources/andu (1).png" style="padding-right: 10px;"></td>
+                        <td><img class="img-responsive" src="resources/firebase.png" style="padding-right: 10px;"></td>
+                        <td><img class="img-responsive" src="resources/PR.png" style="padding-right: 10px;"></td>
+                        <td><img class="img-responsive" src="resources/Figma.png"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="img-responsive" src="resources/Jira_Icon.png" style="padding-right: 10px;"></td>
+                        <td><img class="img-responsive" src="resources/Office_Icon.png" style="padding-right: 10px;"></td>
+                        <td><img class="img-responsive" src="resources/Visio_Icon.webp" style="padding-right: 10px;"></td>
+                        <td><img class="img-responsive" src="resources/Tableau_Logo.png" style="padding-right: 10px;"></td>
+                        <td><img class="img-responsive" src="resources/PowerBI-Logo.png" style="padding-right: 10px;"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-sm-2">&nbsp;</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">&nbsp;</div>
+            <div class="col-sm-4">
+                <img src="resources/skill2 (1).png" width="650px" height="450px">
+            </div>
+
+            <div class="col-sm-6" style="text-align: center; padding-top: 200px;">
+                <h2>
+                    <B>Technical Skills</B>
+                </h2>
+            </div>
+            <div class=" col-sm-1 ">&nbsp;</div>
+        </div>
+
+    </div>
+    <div class="container-fluid visible-lg visible-md" id="section4" style="padding-top: 35px; padding-bottom: 35px; padding-left: 150px; padding-right: 150px; ">
+        <h2 style="text-align: center; padding-bottom: 25px; ">
+            <B>Work Experience</B>
+        </h2>
+        <div class="row ">
+            <div class="col-sm-4" style="padding-bottom: 10px;">
+                <div style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); width:300px; border-radius: 25px; padding: 15px; text-align: center; background-color: #f1f1f1; margin: auto;">
+                    <img src="resources/amz.png " alt="LAAF" style="width:250px; border-radius: 25px; ">
+                    <p>&nbsp;</p>
+                    <h4 class="title">
+                        <B>Data analyst</B>
+                    </h4>
+                    <p>&nbsp;</p>
+                    <h5>Dec 2018 to Jul 2019</h5>
+                    <p>&nbsp;</p>
+                </div>
+            </div>
+            <div class="col-sm-4" style="padding-bottom: 10px;">
+                <div style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); width:300px; border-radius: 25px; padding: 15px; text-align: center; background-color: #f1f1f1; margin: auto;">
+                    <img src="resources/akson3.jpg " alt="JP Morgan & Chase" style="width:250px; border-radius: 25px; ">
+                    <p>&nbsp;</p>
+                    <h4 class="title">
+                        <B>Management Trainee</B>
+                    </h4>
+                    <p>&nbsp;</p>
+                    <h5>Dec 2017 to Dec 2018</h5>
+                    <p>Some text</p>
+                </div>
+            </div>
+            <div class="col-sm-4" style="padding-bottom: 10px;">
+                <div style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); width:300px; border-radius: 25px; padding: 15px; text-align: center; background-color: #f1f1f1; margin: auto;">
+                    <img src="resources/maxgen.png " alt="Deloitte" style="width:250px; border-radius: 25px; ">
+                    <p>&nbsp;</p>
+                    <h4 class="title">
+                        <B>Jr. JAVA Developer</B>
+                    </h4>
+                    <p>&nbsp;</p>
+                    <h5>Nov 2016 to Nov 2017</h5>
+                    <p>&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid visible-sm visible-xs" style="text-align: center;">
+        <h2 style="text-align: center;">
+            <B>Work Experience</B>
+        </h2>
+        <div class="row">
+            <div class="col-sm-4"><img src="resources/LAAF_Circular.png" width="150px"></div>
+            <div class="col-sm-8">
+                <h3>
+                    <B>LAAF, Inc.</B>
+                </h3><br>
+                <H4>
+                    <B>Business Analyst Intern</B>
+                </h4><br>
+                <H5 style="color: grey;">
+                    <B>Oct 2020 - Dec 2020</B>
+                </h5>
+            </div>
+        </div>
+        <div class="row" style="padding-top: 15px;">
+            <div class="col-sm-4"><img src="resources/Chase_Circular.png" width="150px"></div>
+            <div class="col-sm-8">
+                <h3>
+                    <B>JP Morgan Chase</B>
+                </h3><br>
+                <H4>
+                    <B>Technology Controls Business Analyst</B>
+                </h4><br>
+                <H5 style="color: grey;">
+                    <B>Jan 2018 - Nov 2019</B>
+                </h5>
+            </div>
+        </div>
+        <div class="row" style="padding-top: 15px;">
+            <div class="col-sm-4"><img src="resources/Deloitte_circular.png" width="150px"></div>
+            <div class="col-sm-8">
+                <h3>
+                    <B>Deloitte</B>
+                </h3><br>
+                <H4>
+                    <B>Knowledge Management Business Analyst</B>
+                </h4><br>
+                <H5 style="color: grey;">
+                    <B>May 2016 - Dec 2017</B>
+                </h5>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid visible-sm visible-xs" style="text-align: center; background-color: rgba(44, 47, 121, 0.05); padding-top: 15px; padding-bottom: 25px;">
+        <h2 style="text-align: center;">
+            <B>College Projects</B>
+        </h2>
+        <div class="row">
+            <div class="col-sm-4"><img src="resources/George_Brown_College_logo.png" width="150px"></div>
+            <div class="col-sm-8">
+                <br>
+                <H4>
+                    A mobile application UI and re-engineered process of collecting /reviewing /publishing 'Alumni Success Stories' for business analysis program (T405) at GBC.
+                </h4><br>
+                <table>
+                    <tr>
+                        <td style="padding-right: 15px; ">
+                            <h4>
+                                <B>Artefacts</B>
+                            </h4>
+                        </td>
+
+                        <td style="padding-right: 15px; ">
+                            <a href="https://drive.google.com/file/d/1w8movsxaBW3SxTogvw_wLuhbrj0h8ZDK/view?usp=sharing " target="_Blank "><img src="resources/PPT_Icon.png " width="50px "></a>
+                        </td>
+                        <td style="padding-right: 15px; ">
+                            <a href="https://drive.google.com/file/d/1GuSF0m5dOp5Aasr0ODMPoVbxaJ_f0Ko7/view?usp=sharing " target="_Blank "><img src="resources/UIUX_Icon.png " width="50px "></a>
+                        </td>
+                        <td>
+                            <a href="https://www.figma.com/proto/o531SkJuJ92U9h1MAzY0kS/T405SuccessStories?node-id=4%3A73&scaling=scale-down " target="_Blank "><img src="resources/Figma_Icon.png " width="50px "></a>
+                        </td>
+
+                    </tr>
+                </table>
+
+            </div>
+
+        </div>
+        <div class="row" style="padding-top: 15px;">
+            <div class="col-sm-4"><img src="resources/AssembleIn_Circular.png" width="150px"></div>
+            <div class="col-sm-8">
+                <br>
+                <H4>
+                    A web application for booking events, activities, movies, etc., scheduled in major Canadian cities.
+                </h4><br>
+                <table>
+                    <tr>
+                        <td style="padding-right: 15px; ">
+                            <h4>
+                                <B>Artefacts</B>
+                            </h4>
+                        </td>
+                        <td style="padding-right: 15px; ">
+                            <a href="https://youtu.be/ABwgpi9xx84 " target="_Blank "><img src="resources/YouTube_Icon.png " width="50px "></a>
+                        </td>
+
+                        <td style="padding-right: 15px; ">
+                            <a href="https://www.figma.com/proto/aF0LyNyaw5cqpwUY9rzwA4/BA-Case-2-Team-12-Colors?node-id=14%3A1&scaling=scale-down " target="_Blank "><img src="resources/Figma_Icon.png " width="50px "></a>
+                        </td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+        <div class="row" style="padding-top: 15px;">
+            <div class="col-sm-4"><img src="resources/RPA_Icon.png" width="150px"></div>
+            <div class="col-sm-8">
+                <h3>
+                    <br>
+                    <h4>
+                        Learning and understanding the Project quality and analysis.
+                    </h4><br>
+                    <table>
+                        <tr>
+                            <td style="padding-right: 15px; ">
+                                <h4>
+                                    <B>Artefacts</B>
+                                </h4>
+                            </td>
+                            <td style="padding-right: 15px; ">
+                                <a href="https://youtu.be/HcS6fz5qWc0 " target="_Blank "><img src="resources/YouTube_Icon.png " width="50px "></a>
+                            </td>
+                            <td style="padding-right: 15px; ">
+                                <a href=" " target="_Blank ">&nbsp;
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+    </div>
+    <div class="container-fluid visible-sm visible-xs" style="text-align: center; padding-top: 25px; padding-bottom: 25px;">
+        <h2 style="text-align: center;">
+            <B>Education</B>
+        </h2>
+        <div class="row">
+            <div class="col-sm-4"><img src="resources/GBC_Circular.png" width="150px"></div>
+            <div class="col-sm-8">
+                <h3>
+                    <B>George Brown College</B>
+                </h3><br>
+                <H4>
+                    <B>Post-Graduate Certificate - Information Systems Business Analysis</B>
+                </h4><br>
+                <H5 style="color: grey;">
+                    <B>Sept 2020 - Aug 2021</B>
+                </h5>
+            </div>
+        </div>
+        <div class="row" style="padding-top: 15px;">
+            <div class="col-sm-4"><img src="resources/cent.png" width="150px"></div>
+            <div class="col-sm-8">
+                <h3>
+                    <B>Centennial College</B>
+                </h3><br>
+                <H4>
+                    <B>Mobile Application development</B>
+                </h4><br>
+                <H5 style="color: grey;">
+                    <B>Sept 2019 - Apr 2020</B>
+                </h5>
+            </div>
+        </div>
+        <div class="row" style="padding-top: 15px;">
+            <div class="col-sm-4"><img src="resources/SRM_Circular.png" width="150px"></div>
+            <div class="col-sm-8">
+                <h3>
+                    <B>SRM University</B>
+                </h3><br>
+                <H4>
+                    <B>Bachelor of Technology - Biotechnology</B>
+                </h4><br>
+                <H5 style="color: grey;">
+                    <B>Jun 2010 - Apr 2014</B>
+                </h5>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid visible-lg visible-md" id="section5" style="padding-top: 50px; padding-right: 150px; padding-left: 150px; ">
+        <h2 style="text-align: center; padding-bottom: 25px; ">
+            <B>College Projects</B>
+        </h2>
+        <div class="row ">
+            <div class="col-sm-4 text-center">
+                <div class="flip-card ">
+                    <div class="flip-card-inner ">
+                        <div class="flip-card-front ">
+                            <img src="resources/cent.png " alt="Alumni Success Stories " style="width:275px ">
+                        </div>
+                        <div class="flip-card-back ">
+                            <h3 style="padding-top: 25px; ">Healthify and Travel_Taker - Android application</h3>
+                            <h5 style="padding-top: 25px; ">A interactive mobile application developed in android studio, integrating API and Firebase database.</h5><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="flip-card ">
+                    <div class="flip-card-inner ">
+                        <div class="flip-card-front ">
+                            <img src="resources/faq (1).png " alt="AssembleIn " style="width:275px ">
+                        </div>
+                        <div class="flip-card-back ">
+                            <h3 style="padding-top: 25px; ">GBC - FAQ & Call Center Improvement</h3>
+                            <h5 style="padding-top: 25px; ">A mobile application UI/UX desiged to cut off the College agent workload by designing FAQ efficiently</h5>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="flip-card">
+                    <div class="flip-card-inner ">
+                        <div class="flip-card-front ">
+                            <img src="resources/RPA_Icon.JPG " alt="Alumni Success Stories " style="width:275px ">
+                        </div>
+                        <div class="flip-card-back ">
+                            <h3 style="padding-top: 25px; ">Project Management Quality Control</h3>
+                            <h5 style="padding-top: 25px; ">Learning and understanding the Project quality and analysis.</h5><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid visible-lg visible-md " style="padding-bottom: 50px; padding-top: 25px;">
+        <div class="row ">
+            <div class="col-sm-4 ">
+                <table class="link-table">
+                    <tr>
+                        <td style="padding-left: 125px; ">
+                            <h4>
+                                <B>Artefacts</B>
+                            </h4>
+                        </td>
+
+                        <td style="padding-right: 15px; ">
+                            <a href="https://github.com/vedvratsp " target="_Blank "><img src="resources/git.png " width="50px "></a>
+                        </td>
+                        <!-- <td style="padding-right: 15px; ">
+                            <a href="https://drive.google.com/file/d/1GuSF0m5dOp5Aasr0ODMPoVbxaJ_f0Ko7/view?usp=sharing " target="_Blank "><img src="resources/UIUX_Icon.png " width="50px "></a>
+                        </td>
+                        <td>
+                            <a href="https://www.figma.com/proto/o531SkJuJ92U9h1MAzY0kS/T405SuccessStories?node-id=4%3A73&scaling=scale-down " target="_Blank "><img src="resources/Figma_Icon.png " width="50px "></a>
+                        </td> -->
+
+                    </tr>
+                </table>
+            </div>
+            <div class="col-sm-4 ">
+                <table class="link-table">
+                    <tr>
+                        <td style="padding-right: 15px; ">
+                            <h4>
+                                <B>Artefacts</B>
+                            </h4>
+                        </td>
+                        <!-- <td style="padding-right: 15px; ">
+                            <a href="https://youtu.be/ABwgpi9xx84 " target="_Blank "><img src="resources/YouTube_Icon.png " width="50px "></a>
+                        </td> -->
+
+                        <td style="padding-right: 15px; ">
+                            <a href=" https://www.figma.com/proto/C9FJQ1ejD84501PxtiKaje/facio-login-screens?node-id=84%3A3&scaling=scale-down&page-id=84%3A2" target="_Blank "><img src="resources/Figma_Icon.png " width="50px "></a>
+                        </td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-sm-4 ">
+                <table class="link-table">
+                    <tr>
+                        <td style="padding-right: 25px; ">
+                            <h4>
+                                <B>Artefacts</B>
+                            </h4>
+                        </td>
+                        <td style="padding-right: 15px; ">
+                            <a href="https://youtu.be/HcS6fz5qWc0 " target="_Blank "><img src="resources/YouTube_Icon.png " width="50px "></a>
+                        </td>
+                        <td style="padding-right: 225px; ">
+                            <a href=" " target="_Blank "></a>&nbsp;
+                        </td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid visible-lg visible-md" id="section6" style="padding-top: 50px; padding-bottom: 50px; ">
+        <h2 style="text-align: center; padding-bottom: 25px; ">
+            <B>Education</B>
+        </h2>
+        <div class="row ">
+            <div class="col-sm-2 ">&nbsp;</div>
+            <div class="col-sm-8 " style="text-align: center; "><img src="resources/college.png " class="img-responsive " style="padding-right: 130px;"></div>
+            <div class="col-sm-2 ">&nbsp;</div>
+        </div>
+    </div>
+    <div class="container-fluid container2 ">
+        <div class="row ">
+            <div class="col-sm-1" style="padding-top: 25px;"><img src="resources/sign.png" height="80px">
+            </div>
+            <div class="col-sm-3">
+                <h4><b>Address:</b></h4>
+                <h4>Toronto, ON,<br> Canada</h4>
+                <table>
+                    <tr>
+                        <td>
+                            <a href="mailto:vedvratsp@gmail.com " target="_blank "><img src="resources/email_Icon.png" height="20px"></a>
+                        </td>
+                        <td style="padding-left: 25px; ">&nbsp;</td>
+                        <td>
+                            <a href="https://www.linkedin.com/in/vedvrat-singh-parihar-763a91111/ " target="_Blank"><img src="resources/linkedin_icon.png" height="28px"></a>
+                        </td>
+                        <td style="padding-left: 25px;">&nbsp;</td>
+                        <td>
+                            <a href="https://www.instagram.com/vedvrat_singh/" target="_Blank"><img src="resources/Inta_Icon.png" height="30px"></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-sm-8">&nbsp;</div>
+        </div>
+    </div>
+    <script>
+        //Get the button
+        var mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+    <script>
+        var card = document.getElementById('card');
+
+        var rule = CSSRulePlugin.getRule(".card::before");
+        var rule2 = CSSRulePlugin.getRule(".card::after");
+
+        var tl = gsap.timeline({
+            defaults: {
+                ease: "power2.inOut"
+            }
+        });
+
+        tl.to(rule, {
+            width: '100%'
+        })
+        tl.to(rule2, {
+            width: '100%'
+        }, "-=.3")
+        tl.to('h1', {
+            color: 'white'
+        }, "-=.7")
+        tl.to('p', {
+            'clipPath': 'circle(140% at 0% 100%)',
+            'transform': 'translateX(0)',
+            ease: Back.easeOut.config(4),
+        }, "-=.3")
+        tl.pause();
+
+        card.addEventListener('mouseenter', () => {
+            tl.play();
+        })
+        card.addEventListener('mouseleave', () => {
+            tl.reverse();
+        })
+    </script>
+    <script>
+        const canvas = document.getElementById('canvas');
+
+        const texts = [
+            'Business Analysis', 'Knowledge Management', 'UI/UX', 'Newsletter Design',
+            'Web Design', 'IT Project Management', 'SQL', 'Enterprise Content Management',
+            'Internal Communications', 'Agile', 'Waterfall', 'Kanban', 'Scrum', 'Wireframes / Prototyping',
+             'Business Research', 'Data Analysis', 'Data Visualization', 'JAVA', 'HTML', 'CSS', 'JavaScript',
+             'Cost and schedule management', 'IT Strategy', 'JIRA', 'Technical Support', 'Client Relationship Management'
+        ];
+        const counts = [1, 2, 4, 5, 6, 5, 4, 2, 1];
+
+        const options = {
+            tilt: Math.PI / 9,
+            initialVelocityX: 0.09,
+            initialVelocityY: 0.09,
+            initialRotationX: Math.PI * 0.14,
+            initialRotationZ: 0
+        };
+
+        wordSphere(canvas, texts, counts, options);
+
+        /**
+         * WordSphere
+         * Written by Hyojun Kim in 2017. Licensed in MIT.
+         */
+        function wordSphere(canvas, texts, counts, options) {
+            const π = Math.PI; // happy math!
+            const {
+                width = 700,
+                    height = 700,
+                    radius = 300,
+                    padding = 50,
+                    fontSize = 28,
+                    tilt = 0,
+                    initialVelocityX = 0,
+                    initialVelocityY = 0,
+                    initialRotationX = 0,
+                    initialRotationZ = 0,
+            } = options;
+
+            let vx = initialVelocityX,
+                vy = initialVelocityY;
+            let rx = initialRotationX,
+                rz = initialRotationZ;
+
+            // canvas setup
+            let ctx = canvas.getContext('2d');
+            ctx.textAlign = 'center';
+
+            // Hi-DPI support
+            canvas.width = width * 2.5;
+            canvas.height = height * 3;
+            canvas.style.width = `${width}px`;
+            canvas.style.height = `${height}px`;
+            ctx.scale(2, 2);
+
+            // scrolling
+            let clicked = false,
+                lastX, lastY;
+            canvas.addEventListener('mousedown', event => {
+                clicked = true;
+                lastX = event.screenX;
+                lastY = event.screenY;
+            });
+            canvas.addEventListener('mousemove', event => {
+                if (!clicked) return;
+                [dx, dy] = [event.screenX - lastX, event.screenY - lastY];
+                [lastX, lastY] = [event.screenX, event.screenY];
+
+                // rotation update
+                rz += -dy * 0.01;
+                rx += dx * 0.01;
+
+                // velocity update
+                vx = dx * 0.1;
+                vy = dy * 0.1;
+
+                if (!looping) startLoop();
+            });
+            canvas.addEventListener('mouseup', e => clicked = false);
+            canvas.addEventListener('mouseleave', e => clicked = false);
+
+            function rot(x, y, t) {
+                return [x * Math.cos(t) - y * Math.sin(t), x * Math.sin(t) + y * Math.cos(t)];
+            }
+
+            function render() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                let ix = 0,
+                    iz = 0,
+                    i = 1;
+                for (const text of texts) {
+                    const degZ = (π / (counts.length - 1)) * iz;
+                    const degX = (2 * π / counts[iz]) * ix;
+
+                    let x = radius * Math.sin(degZ) * Math.cos(degX);
+                    let y = radius * Math.sin(degZ) * Math.sin(degX);
+                    let z = radius * Math.cos(degZ) + 8 * (ix % 2) /* randomness */ ;
+
+                    // camera transform
+                    [y, z] = rot(y, z, tilt);
+                    [x, z] = rot(x, z, rz);
+                    [x, y] = rot(x, y, rx);
+
+                    // convert to cartesian and then draw.
+                    const alpha = 0.6 + 0.4 * (x / radius);
+                    const size = fontSize + 2 + 5 * (x / radius);
+                    ctx.fillStyle = `rgba(0,0,0,${alpha})`;
+                    ctx.font = `${size}px "Helvetica Neue ", sans-serif`;
+                    ctx.fillText(text, y + width / 2, -z + height / 2);
+
+                    ix--;
+                    if (ix < 0) {
+                        iz++;
+                        ix = counts[iz] - 1;
+                    }
+                    i++;
+                }
+            }
+
+            // renderer
+            let looping = false;
+
+            function rendererLoop() {
+                if (looping) window.requestAnimationFrame(rendererLoop);
+                render();
+
+                // deacceleration - dirty code xD
+                if (vx > 0) vx = vx - 0.01;
+                if (vy > 0) vy = vy - 0.01;
+                if (vx < 0) vx = vx + 0.01;
+                if (vy > 0) vy = vy + 0.01;
+                if (vx == 0 && vy == 0) stopLoop();
+
+                rz += vy * 0.01;
+                rx += vx * 0.01;
+            }
+
+            function startLoop() {
+                looping = true;
+                window.requestAnimationFrame(rendererLoop);
+            }
+
+            function stopLoop() {
+                looping = false;
+            }
+            startLoop();
+        }
+    </script>
+
+</body>
+
+</html>
